@@ -1,0 +1,25 @@
+{
+ "users": {
+  "admin": {
+   "password": [
+    "$y$j9T$pNVjOgcNNGIWjBcdDfK/7.$Ir4uYxszxtqzVj5AGiZvdWJGs.bpLWBJvHON3YgqnC2",
+    "$y$j9T$767bc7bf1f227c35$EZazrpo5W/IWnn.JZmpv0BnwA1r8IOeb5cLsw9j5ee.",
+    "$y$j9T$pNVjOgcNNGIWjBcdDfK/7.$Ir4uYxszxtqzVj5AGiZvdWJGs.bpLWBJvHON3YgqnC2",
+    "$y$j9T$63a71fba7954d4d3$Y/9g1Ah1jIJbbmVlJvIWtIdlkE7EHYgC086Ei55UZeD",
+    "$y$j9T$pNVjOgcNNGIWjBcdDfK/7.$Ir4uYxszxtqzVj5AGiZvdWJGs.bpLWBJvHON3YgqnC2",
+    "$y$j9T$e35e120a24dcb56f$k8d/6W6X4s/fFRJHigfVlnq/SYUPURxuPcdDFeS7Tv/",
+    "$y$j9T$pNVjOgcNNGIWjBcdDfK/7.$Ir4uYxszxtqzVj5AGiZvdWJGs.bpLWBJvHON3YgqnC2",
+    "$y$j9T$4e6efc583c240584$Ug3UFj5NDT8nTZDYjMfHhVEKgDAga4I46VcfwhkQ6w8",
+    "$y$j9T$pNVjOgcNNGIWjBcdDfK/7.$Ir4uYxszxtqzVj5AGiZvdWJGs.bpLWBJvHON3YgqnC2",
+    "$y$j9T$d6ed477ee5b3b0eb$PiPT93DZoSr7hMBmTFHx4dUREz8rkRxYPEfydw8Aij8"
+   ],
+   "failed_login_count": 0,
+   "locked_out": false,
+   "password_changed_after_first_login": true,
+   "password_update_time": "2025-05-14T19:13:32Z",
+   "last_successful_login_time": "2025-05-15T14:52:47Z"
+  }
+ },
+ "ntp_sync": false,
+ "password_change_after_first_login": false
+}

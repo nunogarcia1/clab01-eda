@@ -1,0 +1,26 @@
+---
+client1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.40.40.5
+client2:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.40.40.6
+leaf1:
+    username: admin
+    password: NokiaSrl1!
+    platform: nokia_srlinux
+    hostname: 172.40.40.2
+leaf2:
+    username: admin
+    password: NokiaSrl1!
+    platform: nokia_srlinux
+    hostname: 172.40.40.3
+spine:
+    username: admin
+    password: NokiaSrl1!
+    platform: nokia_srlinux
+    hostname: 172.40.40.4

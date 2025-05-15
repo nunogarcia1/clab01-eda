@@ -1,0 +1,93 @@
+# topology documentation: http://containerlab.dev/lab-examples/min-clos/
+name: clos01
+
+mgmt:
+  network: eda_mgmt
+  ipv4-subnet: 172.40.40.0/24
+
+topology:
+  kinds:
+    nokia_srlinux:
+      #      image: ghcr.io/nokia/srlinux
+      image: ghcr.io/nokia/srlinux:24.10.1
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    leaf1:
+      kind: nokia_srlinux
+      mgmt-ipv4: 172.40.40.2
+      type: ixrd2l
+        #ports:
+        # - 2222:22
+      labels:
+        graph-posX: "565"
+        graph-posY: "255"
+        graph-groupLabelPos: bottom-center
+    leaf2:
+      kind: nokia_srlinux
+      mgmt-ipv4: 172.40.40.3
+      type: ixrd2l
+      labels:
+        graph-posX: "455"
+        graph-posY: "255"
+        graph-groupLabelPos: bottom-center
+    spine:
+      kind: nokia_srlinux
+      mgmt-ipv4: 172.40.40.4
+      type: ixrd3l
+      labels:
+        graph-posX: "515"
+        graph-posY: "195"
+        graph-groupLabelPos: bottom-center
+    client1:
+      kind: linux
+      mgmt-ipv4: 172.40.40.5
+      exec:
+        - ip link add bond0 type bond mode 802.3ad xmit_hash_policy layer3+4
+        - ip link set addr 00:c1:ab:01:01:01 dev bond0
+        - ip link set eth1 down
+        - ip link set eth1 master bond0
+        - ip link set eth1 up
+        - ip link set bond0 up
+        - ip link add link bond0 name bond0.1001 type vlan id 1001
+        - ip link add link bond0 name bond0.201 type vlan id 201
+        - ip link add link bond0 name bond0.202 type vlan id 202
+        - ip link set bond0.1001 up
+        - ip link set bond0.201 up
+        - ip link set bond0.202 up
+        - ip addr add 10.0.0.1/24 dev bond0.1001
+        - ip addr add 10.20.1.1/24 dev bond0.201
+        - ip addr add 10.20.2.1/24 dev bond0.202
+      labels:
+        graph-posX: "565"
+        graph-posY: "325"
+        graph-groupLabelPos: bottom-center
+    client2:
+      kind: linux
+      mgmt-ipv4: 172.40.40.6
+      exec:
+        - ip link add bond0 type bond mode 802.3ad xmit_hash_policy layer3+4
+        - ip link set addr 00:c1:ab:01:01:02 dev bond0
+        - ip link set eth1 down
+        - ip link set eth1 master bond0
+        - ip link set eth1 up
+        - ip link set bond0 up
+        - ip link add link bond0 name bond0.1001 type vlan id 1001
+        - ip link add link bond0 name bond0.201 type vlan id 201
+        - ip link add link bond0 name bond0.202 type vlan id 202
+        - ip link set bond0.1001 up
+        - ip link set bond0.201 up
+        - ip link set bond0.202 up
+        - ip addr add 10.0.0.2/24 dev bond0.1001
+        - ip addr add 10.20.1.2/24 dev bond0.201
+        - ip addr add 10.20.2.2/24 dev bond0.202
+      labels:
+        graph-posX: "455"
+        graph-posY: "325"
+        graph-groupLabelPos: bottom-center
+
+  links:
+    - endpoints: [ "leaf1:e1-1", "spine:e1-1" ]
+    - endpoints: [ "leaf2:e1-1", "spine:e1-2" ]
+    - endpoints: [ "client1:eth1", "leaf1:e1-11" ]
+    - endpoints: [ "client2:eth1", "leaf2:e1-11" ]
